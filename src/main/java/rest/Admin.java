@@ -1,5 +1,6 @@
 package rest;
 
+import facades.UserFacade;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.security.RolesAllowed;
