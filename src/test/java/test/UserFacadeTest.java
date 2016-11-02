@@ -11,8 +11,10 @@ import java.util.HashMap;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import security.IUser;
 import security.PasswordStorage;
 
 /**
@@ -44,9 +46,10 @@ public class UserFacadeTest {
     
     @Test
     public void testGetUser(){
-    UserFacade uf = new UserFacade();
-    uf.authenticateUser("test", "test");
-   
-    }
+        System.out.println("get user");
+    UserFacade us = new UserFacade();
+        System.out.println(us.getUserByUserId("1"));
+        System.out.println(us.getPersons());
+      }
     
 }

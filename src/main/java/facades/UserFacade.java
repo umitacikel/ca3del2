@@ -1,5 +1,6 @@
 package facades;
 
+import entity.User;
 import security.IUserFacade;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +18,7 @@ public class UserFacade implements IUserFacade {
   
       EntityManagerFactory emf;
      private final  Map<String, IUser> users = new HashMap<>();
+     
     public UserFacade()
     {
     }
@@ -32,25 +34,6 @@ public class UserFacade implements IUserFacade {
         this.emf = emf;
     }
     
-  
-    @Override
-  public IUser getUserByUserId(String userName){
-     EntityManager em = emf.createEntityManager();
-
-        IUser u = null;
-        
-        try
-        {
-            em.getTransaction().begin();
-            u = em.find(IUser.class, userName);
-            em.getTransaction().commit();
-            return u;
-        }
-        finally
-        {
-            em.close();
-        } 
-  }
   /*
   Return the Roles if users could be authenticated, otherwise null
   */
@@ -78,5 +61,63 @@ public class UserFacade implements IUserFacade {
            }
          
   }
-  
+
+    
+  public List<User> getPersons()
+    {
+        EntityManager em = emf.createEntityManager();
+
+        List<User> persons = null;
+        
+        try
+        {
+            em.getTransaction().begin();
+            persons = em.createQuery("Select p from user p").getResultList();
+            em.getTransaction().commit();
+            return persons;
+        }
+        finally
+        {
+            em.close();
+        }
+    }
+
+    public IUser getUserByUserId(int id) {
+             EntityManager em = emf.createEntityManager();
+
+        User u = null;
+        
+        try
+        {
+            em.getTransaction().begin();
+            u = em.find(User.class, id);
+            em.getTransaction().commit();
+            return u;
+        }
+        finally
+        {
+            em.close();
+        } 
+    }
+
+    @Override
+    public IUser getUserByUserId(String id) {
+
+
+         EntityManager em = emf.createEntityManager();
+
+        User u = null;
+        
+        try
+        {
+            em.getTransaction().begin();
+            u = em.find(User.class, id);
+            em.getTransaction().commit();
+            return u;
+        }
+        finally
+        {
+            em.close();
+        } 
+    }
 }
