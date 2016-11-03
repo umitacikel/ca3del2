@@ -44,12 +44,22 @@ public class UserFacadeTest {
     
     
     
-    @Test
-    public void testGetUser(){
-        System.out.println("get user");
-    UserFacade us = new UserFacade();
-        System.out.println(us.getUserByUserId("1"));
-        System.out.println(us.getPersons());
-      }
+//    @Test
+//    public void testGetUser(){
+//        System.out.println("get user");
+//    UserFacade us = new UserFacade(Persistence.createEntityManagerFactory( "seedMavenP" ));
+//        System.out.println(us.getUserByUserId(1));
+//       
+//      }
+//    
+//    @Test
+//    public void auch(){
+//                EntityManagerFactory emf = Persistence.createEntityManagerFactory("seedMavenP");
+//
+//    UserFacade us = new UserFacade(emf);
+//    us.authenticateUser("test", "test");
+//    
+//    
+//    }
     
 }

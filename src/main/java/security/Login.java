@@ -33,21 +33,24 @@ public class Login {
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
   public Response login(String jsonString) throws JOSEException {
-    try {
+      try {
+          
       JsonObject json = new JsonParser().parse(jsonString).getAsJsonObject();
       String username = json.get("username").getAsString();
+        System.out.println(jsonString);
       String password = json.get("password").getAsString();
       JsonObject responseJson = new JsonObject();
       List<String> roles;
-
+       
       if ((roles = authenticate(username, password)) != null) {
         String token = createToken(username, roles);
-        responseJson.addProperty("username", username);
+        responseJson.addProperty("userName", username);
         responseJson.addProperty("token", token);
         return Response.ok(new Gson().toJson(responseJson)).build();
       }
     }
     catch (Exception e){
+        System.out.println(e);
       if(e instanceof JOSEException){
         throw e;
       }
@@ -57,7 +60,7 @@ public class Login {
 
   
   private List<String> authenticate(String userName, String password) {
-    IUserFacade facade = UserFacadeFactory.getInstance();
+    UserFacade facade = UserFacadeFactory.getInstance();
     return facade.authenticateUser(userName, password);
   }
 
@@ -89,4 +92,6 @@ public class Login {
     signedJWT.sign(signer);
     return signedJWT.serialize();
   }
+  
+
 }

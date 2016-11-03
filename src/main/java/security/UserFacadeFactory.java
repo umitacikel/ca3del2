@@ -6,14 +6,12 @@
 package security;
 
 import facades.UserFacade;
+import javax.persistence.Persistence;
 
-/**
- *
- * @author lam
- */
+
 public class UserFacadeFactory {
-    private static  IUserFacade instance = new UserFacade();
-    public static IUserFacade getInstance(){
+    private static  UserFacade instance = new UserFacade( Persistence.createEntityManagerFactory( "seedMavenP" ));
+    public static UserFacade getInstance(){
         return instance;
     }
 }

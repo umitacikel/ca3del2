@@ -45,10 +45,11 @@ angular.module('myApp.security', [])
           clearUserDetails($scope);
 
           $scope.login = function () {
+              console.log("hello " + $scope.user);
             $http.post('api/login', $scope.user)
                     .success(function (data) {
                       $window.sessionStorage.id_token = data.token;
-                      initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
+              initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
                       $location.path("#/view6");
                     })
                     .error(function (data) {
@@ -62,7 +63,7 @@ angular.module('myApp.security', [])
             $scope.isAdmin = false;
             $scope.isUser = false;
             delete $window.sessionStorage.id_token;
-            $location.path("/view1");
+            $location.path("/view6");
           };
 
           $rootScope.openErrorModal = function (text) {
