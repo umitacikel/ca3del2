@@ -5,6 +5,7 @@ import security.IUserFacade;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javassist.bytecode.stackmap.BasicBlock;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -37,11 +38,9 @@ public class UserFacade implements IUserFacade {
         EntityManager em = emf.createEntityManager();
 
         List<User> userList = null;
-        System.out.println("hello " + userList);
 
         try {
             em.getTransaction().begin();
-            System.out.println("hello2 ");
 
             Query query = em.createQuery("SELECT u FROM User AS u WHERE u.userName = :userName AND u.password = :password");
             query.setParameter("userName", userName);
@@ -51,11 +50,8 @@ public class UserFacade implements IUserFacade {
             System.out.println(userList);
 
             if (userList != null && !userList.isEmpty()) {
-                System.out.println("1");
                 User user = userList.get(0);
-                System.out.println("2");
                 if (user.getPassword().equals(password)) {
-                    System.out.println("3");
                     return user.getRolesAsStrings();
                 } else {
                     return null;
@@ -117,4 +113,22 @@ public class UserFacade implements IUserFacade {
             em.close();
         }
     }
+    
+    public User adduser(String userName, String password){
+        EntityManager em = emf.createEntityManager();
+        User u;
+       u = new User(userName, password);
+        try
+        {
+            em.getTransaction().begin();
+            em.persist(u);
+            em.getTransaction().commit();
+            return u;
+        }
+        finally
+        {
+            em.close();
+        }
+    }
+    
 }

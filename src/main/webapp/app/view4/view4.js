@@ -13,9 +13,11 @@ angular.module('myApp.view4', ['ngRoute'])
   $http.get('api/demouser')
             .success(function (data, status, headers, config) {
               $scope.data = data;
+              
             })
             .error(function (data, status, headers, config) {
-              
+            
+            window.location = '#/view1';
              });
  
 });

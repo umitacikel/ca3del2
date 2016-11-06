@@ -25,11 +25,14 @@ public class Populate {
         PasswordStorage.createHash("test");
         em.persist(u);
         User u2 = new User("admin","test");
+        u2.addRole("admin");
         em.persist(u2);
         
         User u3 = new User("user", "test");
+        u3.addRole("user");
         em.persist(u3);
         
+     
         
         em.getTransaction().commit();
         em.close();

@@ -15,7 +15,8 @@ angular.module('myApp.view5', ['ngRoute'])
               $scope.data = data;
             })
             .error(function (data, status, headers, config) {
-              
+              window.location = '#/view1';
+
              });
  
 });

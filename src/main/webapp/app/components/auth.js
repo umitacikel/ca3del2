@@ -79,7 +79,28 @@ angular.module('myApp.security', [])
               size: 'sm'
             });
           };
-
+          
+          $scope.Create = function() {
+             
+              var u = $scope.c.username1;
+              var p = $scope.c.password1;
+                
+           if (u ==='' || p ==='' ){
+               alert("Username or Password is empty, please fill the empty spaces");
+             console.log("something is empty");
+           }else{    
+             $http.post('api/create', $scope.c);
+             alert("you have been created");
+             
+             
+           }
+               u="";
+               p="";
+            };
+          
+          
+          
+          
           //This sets the login data from session store if user pressed F5 (You are still logged in)
           var init = function () {
             var token = $window.sessionStorage.id_token;

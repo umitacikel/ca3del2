@@ -43,7 +43,7 @@ public class UserFacadeTest {
     }
     
     
-    
+//    
 //    @Test
 //    public void testGetUser(){
 //        System.out.println("get user");
@@ -61,5 +61,9 @@ public class UserFacadeTest {
 //    
 //    
 //    }
-    
+    @Test
+    public void addusertest(){
+    UserFacade us = new UserFacade(Persistence.createEntityManagerFactory( "seedMavenP" ));
+        us.adduser("testasd", "tesasd");
+    }
 }

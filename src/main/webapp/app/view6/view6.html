@@ -7,7 +7,7 @@
                 <div class="form-group">
                     <input type="password" style="width:10em;" placeholder="Password" class="form-control"
                            ng-model="user.password">
-                    {{user}}
+                    
                 </div>
                 <button type="submit" class="btn btn-success">Sign in</button>
             </form>
@@ -19,3 +19,12 @@
                 </button>
             </div>
         </div>
+<div ng-controller="AppLoginCtrl" >
+     <form class="navbar-form navbar-center" role="form" ng-submit="Create()">
+      Create login:<br> 
+      <input type="text" name="Username1" class="form-control" style="width:10em;" placeholder="Username" ng-model="c.username1"/><br>
+      <input type="text" name="password1" class="form-control" style="width:10em;" placeholder="Password" ng-model="c.password1"/><br>
+      <button type="submit" class="btn btn-primary navbar-btn" ng-click="">submit
+      </button>
+     </form>
+ </div>
