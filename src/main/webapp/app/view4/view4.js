@@ -19,5 +19,5 @@ angular.module('myApp.view4', ['ngRoute'])
             
             window.location = '#/view1';
              });
- 
+             alert("Only for users");
 });

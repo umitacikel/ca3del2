@@ -29,7 +29,7 @@ public class Populate {
         em.persist(u2);
         
         User u3 = new User("user", "test");
-        u3.addRole("user");
+        u3.addRole("User");
         em.persist(u3);
         
      

@@ -45,12 +45,11 @@ angular.module('myApp.security', [])
           clearUserDetails($scope);
 
           $scope.login = function () {
-              console.log("hello " + $scope.user);
             $http.post('api/login', $scope.user)
                     .success(function (data) {
                       $window.sessionStorage.id_token = data.token;
               initializeFromToken($scope, $window.sessionStorage.id_token, jwtHelper);
-                      $location.path("#/view6");
+                      $location.path("#/view1");
                     })
                     .error(function (data) {
                       delete $window.sessionStorage.id_token;
@@ -91,11 +90,9 @@ angular.module('myApp.security', [])
            }else{    
              $http.post('api/create', $scope.c);
              alert("you have been created");
-             
-             
            }
-               u="";
-               p="";
+               
+               
             };
           
           

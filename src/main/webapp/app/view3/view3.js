@@ -18,6 +18,7 @@ angular.module('myApp.view3', ['ngRoute', 'ui.bootstrap'])
                                     window.location = '#/view1';
 
                     });
+                    alert("Only for Users");
         });
 
         
